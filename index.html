@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christian's Plumbing – Springfield, Oregon | Lane County Plumber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #bee8f4;
+    --mid: #a4a4a4;
+    --light: #e8e8e8;
+    --white: #ffffff;
+    --dark: #1a2332;
+    --dark2: #243040;
+    --accent: #1a8fb5;
+    --accent2: #0d6e8f;
+    --warm: #f4f0eb;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 70px;
+    background: rgba(26,35,50,0.96);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sky);
+    letter-spacing: .03em;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--sky); }
+  .nav-cta {
+    background: var(--sky);
+    color: var(--dark) !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background .2s, color .2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(190,232,244,.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* Diagonal accent strip */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 52%;
+    height: 120%;
+    background: linear-gradient(160deg, rgba(190,232,244,.06) 0%, rgba(26,143,181,.10) 100%);
+    transform: skewX(-6deg);
+    pointer-events: none;
+  }
+  .hero-left {
+    padding: 120px 64px 80px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 2px;
+    background: var(--sky);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sky);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 44px;
+  }
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--sky);
+    color: var(--dark);
+    padding: 15px 34px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: .95rem;
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: background .2s, transform .15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--accent); color: var(--white); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 15px 34px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: .95rem;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.25);
+    transition: border-color .2s, color .2s;
+  }
+  .btn-secondary:hover { border-color: var(--sky); color: var(--sky); }
+  .hero-badges {
+    display: flex; gap: 24px; margin-top: 52px;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .badge-icon {
+    width: 38px; height: 38px;
+    background: rgba(190,232,244,.12);
+    border: 1px solid rgba(190,232,244,.25);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .badge-text { font-size: .8rem; color: var(--mid); line-height: 1.3; }
+  .badge-text strong { display: block; color: var(--white); font-size: .85rem; }
+
+  /* Hero right – image placeholder + card */
+  .hero-right {
+    position: relative; z-index: 2;
+    height: 100%;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-wrap {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .hero-img-bg {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1e3a4a 0%, #0d2233 50%, #162837 100%);
+    position: relative;
+  }
+  /* Decorative pipe element */
+  .pipe-deco {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 300'%3E%3Ccircle cx='250' cy='150' r='180' fill='none' stroke='rgba(190,232,244,0.06)' stroke-width='40'/%3E%3Ccircle cx='250' cy='150' r='120' fill='none' stroke='rgba(190,232,244,0.04)' stroke-width='20'/%3E%3Cline x1='0' y1='150' x2='500' y2='150' stroke='rgba(190,232,244,0.05)' stroke-width='30'/%3E%3C/svg%3E") center/cover no-repeat;
+  }
+  .hero-stat-card {
+    position: absolute;
+    bottom: 80px; left: -20px;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    min-width: 180px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: .78rem; color: var(--mid); margin-top: 4px; font-weight: 500; }
+  .hero-review-card {
+    position: absolute;
+    top: 120px; right: 30px;
+    background: rgba(26,35,50,.92);
+    border: 1px solid rgba(190,232,244,.2);
+    border-radius: 12px;
+    padding: 18px 22px;
+    max-width: 240px;
+    backdrop-filter: blur(10px);
+  }
+  .stars { color: #f5c842; font-size: .9rem; margin-bottom: 8px; letter-spacing: 2px; }
+  .review-text { font-size: .78rem; color: var(--light); line-height: 1.5; font-style: italic; }
+  .review-author { font-size: .72rem; color: var(--sky); margin-top: 10px; font-weight: 600; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--sky);
+    padding: 18px 80px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: .02em;
+  }
+  .trust-item span { font-size: 1.1rem; }
+  .trust-divider { width: 1px; height: 24px; background: rgba(26,35,50,.2); }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 100px 80px; }
+  .section-eyebrow {
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 2px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ── ABOUT / INTRO ── */
+  .about-section {
+    background: var(--warm);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-img {
+    position: relative;
+  }
+  .about-img-box {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    color: rgba(190,232,244,.15);
+  }
+  .about-img-box::after {
+    content: '🔧';
+    font-size: 5rem;
+    opacity: .3;
+  }
+  .about-accent-box {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    background: var(--sky);
+    border-radius: 10px;
+    padding: 20px 26px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,.15);
+  }
+  .about-accent-box .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .about-accent-box .lbl { font-size: .75rem; font-weight: 600; color: var(--dark2); margin-top: 4px; }
+  .about-text p { font-size: 1rem; color: #444; line-height: 1.75; margin-bottom: 18px; }
+  .about-text p:last-of-type { margin-bottom: 32px; }
+  .values-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 36px;
+  }
+  .value-pill {
+    background: var(--white);
+    border: 1.5px solid var(--light);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .value-pill span { font-size: 1rem; }
+
+  /* ── SERVICES ── */
+  .services-section { background: var(--dark); }
+  .services-section .section-title { color: var(--white); }
+  .services-section .section-sub { color: var(--mid); }
+  .services-section .section-eyebrow { color: var(--sky); }
+  .services-section .section-eyebrow::before { background: var(--sky); }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .service-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(190,232,244,.1);
+    border-radius: 12px;
+    padding: 32px 26px;
+    transition: background .25s, border-color .25s, transform .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sky), var(--accent));
+    opacity: 0;
+    transition: opacity .25s;
+  }
+  .service-card:hover {
+    background: rgba(190,232,244,.06);
+    border-color: rgba(190,232,244,.3);
+    transform: translateY(-4px);
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    width: 48px; height: 48px;
+    background: rgba(190,232,244,.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: .83rem;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .service-link {
+    font-size: .8rem;
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .04em;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .service-link:hover { color: var(--white); }
+
+  /* ── WHY US ── */
+  .why-section {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 26px; margin-top: 36px; }
+  .why-item {
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--sky);
+    line-height: 1;
+    min-width: 40px;
+    /* stroke effect */
+    -webkit-text-stroke: 1.5px var(--accent);
+    color: transparent;
+  }
+  .why-text h4 { font-size: .95rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .why-text p { font-size: .85rem; color: #666; line-height: 1.55; }
+  .why-right {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 52px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-right::before {
+    content: '';
+    position: absolute; top: -40%; right: -20%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(190,232,244,.12) 0%, transparent 70%);
+  }
+  .why-right .section-eyebrow { color: var(--sky); }
+  .why-right .section-eyebrow::before { background: var(--sky); }
+  .why-right .section-title { color: var(--white); font-size: 1.9rem; }
+  .why-right p { color: var(--mid); font-size: .9rem; line-height: 1.7; margin-bottom: 24px; }
+  .guarantee-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(190,232,244,.12);
+    border: 1px solid rgba(190,232,244,.25);
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: .82rem;
+    color: var(--sky);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-section {
+    background: var(--light);
+    text-align: center;
+  }
+  .reviews-section .section-eyebrow { justify-content: center; }
+  .reviews-section .section-eyebrow::before { display: none; }
+  .reviews-section .section-title, .reviews-section .section-sub { margin-left: auto; margin-right: auto; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 56px;
+    text-align: left;
+  }
+  .review-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 36px 32px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.06);
+    position: relative;
+  }
+  .review-card::before {
+    content: '\201C';
+    position: absolute; top: 16px; right: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--sky);
+    line-height: 1;
+  }
+  .review-card .stars { margin-bottom: 14px; font-size: 1rem; }
+  .review-card p { font-size: .88rem; color: #555; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .reviewer {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .reviewer-avatar {
+    width: 40px; height: 40px;
+    background: var(--sky);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: var(--dark); font-size: .9rem;
+  }
+  .reviewer-name { font-size: .85rem; font-weight: 600; color: var(--dark); }
+  .reviewer-meta { font-size: .75rem; color: var(--mid); }
+
+  /* ── SERVICE AREA ── */
+  .area-section {
+    background: var(--dark);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .area-section .section-eyebrow { color: var(--sky); }
+  .area-section .section-eyebrow::before { background: var(--sky); }
+  .area-section .section-title { color: var(--white); }
+  .area-section .section-sub { color: var(--mid); }
+  .area-tags {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+  }
+  .area-tag {
+    background: rgba(190,232,244,.1);
+    border: 1px solid rgba(190,232,244,.2);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: .83rem;
+    color: var(--sky);
+    font-weight: 500;
+  }
+  .area-map-placeholder {
+    background: var(--dark2);
+    border-radius: 16px;
+    aspect-ratio: 4/3;
+    border: 1px solid rgba(190,232,244,.1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    color: var(--mid);
+  }
+  .area-map-placeholder span { font-size: 3rem; }
+  .area-map-placeholder p { font-size: .85rem; }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent2) 0%, var(--dark) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(190,232,244,0.07)' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    font-weight: 900;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  .cta-section h2 em { color: var(--sky); font-style: italic; }
+  .cta-section p {
+    color: rgba(255,255,255,.7);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    position: relative;
+  }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .cta-phone {
+    background: var(--white);
+    color: var(--dark);
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: background .2s;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cta-phone:hover { background: var(--sky); }
+  .cta-schedule {
+    background: transparent;
+    color: var(--white);
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.4);
+    transition: border-color .2s;
+  }
+  .cta-schedule:hover { border-color: var(--sky); color: var(--sky); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f1a26;
+    padding: 60px 80px 30px;
+    color: var(--mid);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    margin-bottom: 48px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--sky);
+    margin-bottom: 14px;
+  }
+  .footer-logo span { color: var(--white); }
+  .footer-about { font-size: .83rem; line-height: 1.7; margin-bottom: 24px; }
+  .footer-contact { font-size: .83rem; line-height: 2; }
+  .footer-contact a { color: var(--sky); text-decoration: none; }
+  .footer-col h4 {
+    font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 18px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: .83rem; color: var(--mid); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--sky); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .78rem;
+  }
+  .footer-badge {
+    background: rgba(190,232,244,.08);
+    border: 1px solid rgba(190,232,244,.15);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: .75rem;
+    color: var(--sky);
+  }
+
+  /* ── SCHEDULE FORM SECTION ── */
+  .schedule-section {
+    background: var(--white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .form-card {
+    background: var(--warm);
+    border-radius: 16px;
+    padding: 48px 44px;
+  }
+  .form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .form-card p { font-size: .88rem; color: #666; margin-bottom: 32px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--dark); margin-bottom: 6px; letter-spacing: .03em; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1.5px solid var(--light);
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .88rem;
+    color: var(--dark);
+    transition: border-color .2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-submit {
+    width: 100%;
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background .2s;
+  }
+  .form-submit:hover { background: var(--accent2); }
+
+  .schedule-info { padding-top: 40px; }
+  .info-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .info-icon {
+    width: 46px; height: 46px; min-width: 46px;
+    background: var(--sky);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .info-item h4 { font-size: .9rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .info-item p { font-size: .83rem; color: #666; line-height: 1.5; }
+
+  /* ── PROCESS SECTION ── */
+  .process-section {
+    background: var(--dark);
+    text-align: center;
+  }
+  .process-section .section-eyebrow { justify-content: center; }
+  .process-section .section-eyebrow::before { display: none; }
+  .process-section .section-title { color: var(--white); }
+  .process-section .section-sub { color: var(--mid); margin: 0 auto 60px; }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 30px; position: relative;
+    margin-top: 60px;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 12.5%; right: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--sky), var(--accent));
+    opacity: .3;
+  }
+  .process-step {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .step-circle {
+    width: 56px; height: 56px;
+    background: var(--dark2);
+    border: 2px solid var(--sky);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--sky);
+    position: relative; z-index: 1;
+  }
+  .process-step h4 { font-size: .9rem; font-weight: 600; color: var(--white); }
+  .process-step p { font-size: .8rem; color: var(--mid); line-height: 1.6; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .trust-bar { padding: 16px 24px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .about-section, .why-section, .area-section, .schedule-section { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Christian's<span> Plumbing</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#service-area">Service Area</a></li>
+    <li><a href="#schedule" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Lane County's Trusted Plumber</p>
+    <h1>Quality Work,<br><em>Done Right</em><br>The First Time.</h1>
+    <p class="hero-sub">From full kitchen & bath remodels to water heater replacements — Christian Anderson brings expert-level plumbing to Springfield, Eugene, and all of Lane County.</p>
+    <div class="hero-buttons">
+      <a href="#schedule" class="btn-primary">📅 Book a Job</a>
+      <a href="tel:+1" class="btn-secondary">📞 Call Now</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">
+        <div class="badge-icon">🛡️</div>
+        <div class="badge-text"><strong>Licensed & Insured</strong>CCB: #251868</div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">⭐</div>
+        <div class="badge-text"><strong>5-Star Rated</strong>Google Reviews</div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon">🗓️</div>
+        <div class="badge-text"><strong>Fast Scheduling</strong>Same-Week Slots</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <div class="hero-img-bg">
+        <div class="pipe-deco"></div>
+      </div>
+    </div>
+    <div class="hero-stat-card">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Years of Expert<br>Plumbing in Lane County</div>
+    </div>
+    <div class="hero-review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"He fixed a problem that two leak detection companies and another plumber couldn't track down… Christian didn't give up."</div>
+      <div class="review-author">— Graham</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>🏠</span> Residential Plumbing</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>🏢</span> Commercial Projects</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>🔨</span> New Construction</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>📍</span> Serving All of Lane County</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>📞</span> Responsive Communication</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-eyebrow">What We Do</p>
+      <h2 class="section-title">Full-Service Plumbing<br>for Every Project</h2>
+    </div>
+    <p class="section-sub">Whether you're planning a remodel or dealing with an unexpected repair, we bring the same level of care and craftsmanship to every job.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🚿</div>
+      <h3>Kitchen & Bath Remodeling</h3>
+      <p>Full plumbing layout, rough-in, and finish work for new and remodeled kitchens and bathrooms.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔥</div>
+      <h3>Water Heater Services</h3>
+      <p>Installations, replacements, and conversions. Tank, tankless, and hybrid options available.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <h3>New Construction Plumbing</h3>
+      <p>Full new-build plumbing from ground up. Underground, rough-in, and finish plumbing.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💧</div>
+      <h3>Water Service Repairs</h3>
+      <p>Main line repairs and full water service installations for residential and commercial properties.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>Plumbing Repairs</h3>
+      <p>Leaks, drain issues, fixture problems — no job too small, no problem too stubborn.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚰</div>
+      <h3>Faucet & Sink Installations</h3>
+      <p>New faucets, sink replacements, and hardware upgrades done right the first time.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔩</div>
+      <h3>Plumbing Maintenance</h3>
+      <p>Preventative maintenance plans to avoid costly breakdowns and keep systems running efficiently.</p>
+      <a href="#" class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card" style="background: rgba(190,232,244,.08); border-color: rgba(190,232,244,.25);">
+      <div class="service-icon">📋</div>
+      <h3>Not sure what you need?</h3>
+      <p>Get a free consult. We'll assess the job honestly and give you a clear plan and fair estimate.</p>
+      <a href="#schedule" class="service-link" style="color:var(--sky)">Book a consult →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-img">
+    <div class="about-img-box"></div>
+    <div class="about-accent-box">
+      <div class="num">7+</div>
+      <div class="lbl">Years in the<br>Trade</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <p class="section-eyebrow">Meet Christian</p>
+    <h2 class="section-title">Built on Craft,<br>Driven by Results</h2>
+    <p>Christian is an Ohio native who brought his work ethic and passion for the trade to Eugene, Oregon in 2017. Since 2018, he's built a diverse background spanning new construction, residential service, and remodeling — from tight crawlspaces to complete bathroom overhauls.</p>
+    <p>What sets Christian apart isn't just skill — it's tenacity. He's the plumber who stays until the problem is solved, not until the job gets hard. When he's not on the job, you'll find him catching live music at a local venue or growing sunflowers in his garden.</p>
+    <div class="values-grid">
+      <div class="value-pill"><span>✅</span> Licensed & Insured</div>
+      <div class="value-pill"><span>💬</span> Clear Communication</div>
+      <div class="value-pill"><span>🏆</span> Quality Over Speed</div>
+      <div class="value-pill"><span>📞</span> Responsive & Reliable</div>
+    </div>
+    <a href="#schedule" class="btn-primary">Work With Christian</a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <p class="section-eyebrow">Simple Process</p>
+  <h2 class="section-title" style="color:var(--white)">From First Call to<br><em style="color:var(--sky)">Finished Job</em></h2>
+  <p class="section-sub">We made scheduling easy so you spend less time worrying and more time with what matters.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">1</div>
+      <h4>Book Online</h4>
+      <p>Fill out our quick scheduling form and we'll confirm your slot fast — no phone tag required.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">2</div>
+      <h4>Get a Quote</h4>
+      <p>We assess your project and provide a clear, honest estimate before any work begins.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">3</div>
+      <h4>We Do the Work</h4>
+      <p>Christian shows up on time, works clean, and finishes the job right the first time.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">4</div>
+      <h4>Follow-Up Care</h4>
+      <p>We check in after the job. Our relationship doesn't end when we pack up our tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="why-left">
+    <p class="section-eyebrow">Why Choose Us</p>
+    <h2 class="section-title">The Plumber Who<br>Doesn't Walk Away</h2>
+    <ul class="why-list">
+      <li class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <h4>Solved What Others Couldn't</h4>
+          <p>We've tracked down leaks that baffled two detection companies and another plumber — and fixed it all in one day.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <h4>Honest About Scope</h4>
+          <p>We tell you exactly what we can and can't do, so there are no surprises on the bill or on the job site.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <h4>After-Hours Responsiveness</h4>
+          <p>Real plumbers answer the phone. We've taken calls in the evening when no one else would, helping clients plan ahead.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <h4>Broad, Deep Experience</h4>
+          <p>New construction, crawlspace repairs, remodels, service work — we bring the full range to every project.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="why-right">
+    <p class="section-eyebrow">Our Commitment</p>
+    <h3 class="section-title" style="font-size:1.9rem; color:var(--white)">Trusted. Skilled.<br>Here for the Long Haul.</h3>
+    <p>Christian's Plumbing is on a mission to be Lane County's most trusted plumbing company — not by cutting corners, but by earning every review and every referral through outstanding work and genuine care for customers.</p>
+    <div class="guarantee-badge">✅ &nbsp;Satisfaction Follow-Up Guarantee</div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <p class="section-eyebrow">Customer Reviews</p>
+  <h2 class="section-title">What Lane County<br>Homeowners Are Saying</h2>
+  <p class="section-sub">Don't take our word for it — here's what real customers have to say about working with Christian.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"I was really impressed and satisfied with Christian and his team. He fixed a problem that two leak detection companies and another plumber couldn’t track down. It was a nagging leak that continued to baffle all of us. Christian didn’t give up nor did he move on because it was hard. He stayed with it, located the issue, and fixed it all in one day. I appreciate the professionalism and Christian’s Plumbing knows their craft. They will always be my first call because I know whatever the issue they will be able to fix it."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">GM</div>
+        <div>
+          <div class="reviewer-name">Verified Customer</div>
+          <div class="reviewer-meta">Springfield, OR · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Excellent, would highly recommend and will likely use again. Was honest about what he would and would not be able to address. We have older, narrower pipes, and was able to get our sink draining again quickly. He was able to fix our problem. Even followed up with fixing another unforeseen issue a week or two later. Took my call in the evening when I didn’t expect any other plumbers to do so, which really helped me plan my next work day. Friendly and a pleasant person to have in our home."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SW</div>
+        <div>
+          <div class="reviewer-name">Verified Customer</div>
+          <div class="reviewer-meta">Eugene, OR · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Christian was fantastic to work with. He clearly knows his craft and handled all of our plumbing needs efficiently and professionally. We would highly recommend him."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">JG</div>
+        <div>
+          <div class="reviewer-name">Verified Customer</div>
+          <div class="reviewer-meta">Lane County, OR · Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="area-section" id="service-area">
+  <div>
+    <p class="section-eyebrow">Service Area</p>
+    <h2 class="section-title">Proudly Serving<br>All of Lane County</h2>
+    <p class="section-sub">Based out of Springfield, Oregon — we serve the full Lane County region for both residential and commercial plumbing needs.</p>
+    <div class="area-tags">
+      <span class="area-tag">📍 Springfield</span>
+      <span class="area-tag">📍 Eugene</span>
+      <span class="area-tag">📍 Cottage Grove</span>
+      <span class="area-tag">📍 Junction City</span>
+      <span class="area-tag">📍 Walterville</span>
+      <span class="area-tag">📍 Creswell</span>
+      <span class="area-tag">📍 Coburg</span>
+      <span class="area-tag">📍 Marcola</span>
+      <span class="area-tag">📍 Oakridge</span>
+      <span class="area-tag">📍 + Surrounding Areas</span>
+    </div>
+  </div>
+  <div class="area-map-placeholder">
+    <span>🗺️</span>
+    <p>Interactive Map — Lane County, Oregon</p>
+    <p style="font-size:.75rem; opacity:.5;">(Google Maps embed goes here)</p>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section" id="schedule">
+  <div>
+    <p class="section-eyebrow">Get Started</p>
+    <h2 class="section-title">Ready to Book<br>Your Project?</h2>
+    <div class="info-item">
+      <div class="info-icon">📅</div>
+      <div>
+        <h4>Schedule Online 24/7</h4>
+        <p>Submit your request anytime. We confirm quickly and get you on the calendar, no phone tag required.</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">💬</div>
+      <div>
+        <h4>Upfront, Honest Estimates</h4>
+        <p>We'll assess your job and give you a fair estimate before any work begins. No surprises.</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">🛡️</div>
+      <div>
+        <h4>Licensed, Insured, and Accountable</h4>
+        <p>Oregon CCB: #251868 | licensed and fully insured. Your home and project are protected.</p>
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-icon">📞</div>
+      <div>
+        <h4>Prefer to Talk?</h4>
+        <p>Call or text us directly. We pick up — even evenings, when it matters.</p>
+      </div>
+    </div>
+  </div>
+  <div class="form-card">
+    <h3>Book Your Job</h3>
+    <p>Tell us about your project and we'll get back to you within one business day.</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Christian">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Anderson">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(541) 555-5555">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Service Needed</label>
+      <select>
+        <option>Select a service...</option>
+        <option>Kitchen & Bathroom Remodeling</option>
+        <option>Water Heater Installation / Conversion</option>
+        <option>New Construction Plumbing</option>
+        <option>Water Service Repair or Installation</option>
+        <option>Plumbing Repair & Maintenance</option>
+        <option>Faucet or Sink Installation</option>
+        <option>Not Sure – Need a Consult</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>City / Location</label>
+      <input type="text" placeholder="Springfield, Eugene, etc.">
+    </div>
+    <div class="form-group">
+      <label>Tell us about the project</label>
+      <textarea placeholder="Briefly describe what needs to be done..."></textarea>
+    </div>
+    <button class="form-submit">📅 Submit Booking Request</button>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <h2>Need a Plumber You Can <em>Actually Count On?</em></h2>
+  <p>Stop settling for no-shows and unanswered calls. Christian's Plumbing shows up, does the work, and follows through — every single time.</p>
+  <div class="cta-buttons">
+    <a href="tel:+1" class="cta-phone">📞 Call or Text Us Now</a>
+    <a href="#schedule" class="cta-schedule">📅 Schedule Online</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Christian's<span> Plumbing</span></div>
+      <p class="footer-about">Springfield, Oregon's locally owned plumbing company serving all of Lane County. Residential, commercial, and new construction plumbing done right.</p>
+      <div class="footer-contact">
+        <div>CCB: #251868</div>
+        <div>📍 Springfield, Oregon — Lane County</div>
+        <div>📞 <a href="tel:+1">(541) 555-5555</a></div>
+        <div>✉️ <a href="mailto:info@christianandersonplumbing.com">info@christianandersonplumbing.com</a></div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="#">Kitchen & Bath Remodeling</a></li>
+        <li><a href="#">Water Heater Services</a></li>
+        <li><a href="#">New Construction</a></li>
+        <li><a href="#">Water Service Repair</a></li>
+        <li><a href="#">Plumbing Repairs</a></li>
+        <li><a href="#">Faucet & Sink Install</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="#">About Christian</a></li>
+        <li><a href="#">Customer Reviews</a></li>
+        <li><a href="#">Service Area</a></li>
+        <li><a href="#">Book a Job</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Area</h4>
+      <ul class="footer-links">
+        <li><a href="#">Springfield Plumber</a></li>
+        <li><a href="#">Eugene Plumber</a></li>
+        <li><a href="#">Cottage Grove Plumber</a></li>
+        <li><a href="#">Junction City Plumber</a></li>
+        <li><a href="#">Marcola Plumber</a></li>
+        <li><a href="#">Lane County Plumber</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Christian's Plumbing — Springfield, Oregon. All rights reserved.</span>
+    <span class="footer-badge">CCB: #251868 - Oregon Licensed & Insured</span>
+  </div>
+</footer>
+
+</body>
+</html>
